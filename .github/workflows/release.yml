@@ -53,5 +53,5 @@ jobs:
           git config --global user.email "yun@nextbillion.ai"
           git config --global user.name "Yun Wang"
           cat $NPMRC > ~/.npmrc
-          npm version ${{github.event.release.tag_name}} --no-git-tag-version
+          npm version --new-version ${{github.event.release.tag_name}}
           npm publish

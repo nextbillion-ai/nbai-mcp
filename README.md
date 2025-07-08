@@ -44,7 +44,7 @@ Add to your Claude Desktop configuration:
 
 ## API Key
 
-Get your free API key at [NextBillion.ai](https://nextbillion.ai)
+Get your API key at [NextBillion.ai](https://nextbillion.ai)
 
 ## License
 

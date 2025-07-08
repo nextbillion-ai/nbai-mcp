@@ -1,0 +1,57 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - name: chown
+        run: sudo chown -R $(whoami) .
+      - uses: actions/checkout@v4
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+      - name: Install dependencies
+        run: bun install
+      - name: Build
+        run: bun run build
+      - name: upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: nbai-mcp-build
+          path: |
+            dist
+            package.json
+            README.md
+            LICENSE
+
+  publish:
+    runs-on: self-hosted
+    needs: build
+    container:
+      image: timbru31/node-alpine-git:20
+      options: --rm -v /opt/secrets:/opt/secrets
+      env:
+        NPMRC: ${{ secrets.NPMRC }}
+    steps:
+      - name: chown
+        run: chown -R $(whoami) .
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: nbai-mcp-build
+      - name: npm publish
+        run: |
+          #!/bin/bash
+          pwd
+          ls -al
+          set -e
+          git config --global user.email "yun@nextbillion.ai"
+          git config --global user.name "Yun Wang"
+          cat $NPMRC > ~/.npmrc
+          npm version ${{github.event.release.tag_name}} --no-git-tag-version
+          npm publish

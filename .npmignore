@@ -1,0 +1,35 @@
+# Source files
+src/
+*.ts
+!dist/**/*.d.ts
+
+# Development files
+.github/
+.vscode/
+.idea/
+tsconfig.json
+.prettierrc
+bun.lock
+
+# Logs and caches
+logs/
+*.log
+.cache/
+*.tsbuildinfo
+.eslintcache
+
+# Environment files
+.env*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test files
+test/
+tests/
+*.test.*
+*.spec.*
+
+# Documentation (keep README.md)
+docs/

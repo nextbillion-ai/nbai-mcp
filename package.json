@@ -34,8 +34,7 @@
   ],
   "scripts": {
     "build": "bun build src/index.ts --outdir dist --target node --format esm --minify",
-    "dev": "bun run src/index.ts",
-    "prepublishOnly": "bun run build"
+    "dev": "bun run src/index.ts"
   },
   "engines": {
     "node": ">=18.0.0"

@@ -1,6 +1,6 @@
 {
   "name": "@nbai/mcp",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "NextBillion.ai MCP Server - Provides geolocation, routing, and navigation tools via Model Context Protocol",
   "main": "dist/index.js",
   "bin": {

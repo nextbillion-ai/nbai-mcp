@@ -115,29 +115,25 @@ export async function handleNavigation(request: DirectionsRequest) {
     content: [
       {
         type: 'text',
-        text: JSON.stringify(
-          {
-            routes: data.routes.map((route) => ({
-              distance: route.distance,
-              duration: route.duration,
-              steps: route.legs.map((leg) => ({
-                distance: leg.distance,
-                duration: leg.duration,
-                steps: leg.steps.map((step) => ({
-                  distance: step.distance,
-                  duration: step.duration,
-                  maneuver: {
-                    instruction: step.maneuver.instruction,
-                    maneuver_type: step.maneuver.maneuver_type,
-                    modifier: step.maneuver.modifier,
-                  },
-                })),
+        text: JSON.stringify({
+          routes: data.routes.map((route) => ({
+            distance: route.distance,
+            duration: route.duration,
+            steps: route.legs.map((leg) => ({
+              distance: leg.distance,
+              duration: leg.duration,
+              steps: leg.steps.map((step) => ({
+                distance: step.distance,
+                duration: step.duration,
+                maneuver: {
+                  instruction: step.maneuver.instruction,
+                  maneuver_type: step.maneuver.maneuver_type,
+                  modifier: step.maneuver.modifier,
+                },
               })),
             })),
-          },
-          null,
-          2,
-        ),
+          })),
+        }),
       },
     ],
     isError: false,

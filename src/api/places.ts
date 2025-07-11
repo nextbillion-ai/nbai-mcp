@@ -88,22 +88,18 @@ async function _generatePlaceDetailResult(data: PlacesDetailResponse) {
     content: [
       {
         type: 'text',
-        text: JSON.stringify(
-          {
-            id: item.id,
-            location: {
-              latitude: item.position.lat,
-              longitude: item.position.lng,
-            },
-            title: item.title,
-            formatted_address: item.address.label,
-            postal_code: item.address.postalCode,
-            categories: item.categories.map((category) => category.name),
-            contact: item.contacts?.[0]?.phone?.[0]?.value || null,
+        text: JSON.stringify({
+          id: item.id,
+          location: {
+            latitude: item.position.lat,
+            longitude: item.position.lng,
           },
-          null,
-          2,
-        ),
+          title: item.title,
+          formatted_address: item.address.label,
+          postal_code: item.address.postalCode,
+          categories: item.categories.map((category) => category.name),
+          contact: item.contacts?.[0]?.phone?.[0]?.value || null,
+        }),
       },
     ],
     isError: false,

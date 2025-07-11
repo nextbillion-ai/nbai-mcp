@@ -79,18 +79,14 @@ export async function handleDistanceMatrix(request: DistanceMatrixRequest) {
     content: [
       {
         type: 'text',
-        text: JSON.stringify(
-          {
-            results: data.rows.map((row) => ({
-              elements: row.elements.map((element) => ({
-                duration: element.duration.value,
-                distance: element.distance.value,
-              })),
+        text: JSON.stringify({
+          results: data.rows.map((row) => ({
+            elements: row.elements.map((element) => ({
+              duration: element.duration.value,
+              distance: element.distance.value,
             })),
-          },
-          null,
-          2,
-        ),
+          })),
+        }),
       },
     ],
     isError: false,

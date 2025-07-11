@@ -115,24 +115,20 @@ export async function handleDirections(request: DirectionsRequest) {
     content: [
       {
         type: 'text',
-        text: JSON.stringify(
-          {
-            routes: data.routes.map((route) => ({
-              distance: route.distance,
-              duration: route.duration,
-              steps: route.legs.map((leg) => ({
-                distance: leg.distance,
-                duration: leg.duration,
-                steps: leg.steps.map((step) => ({
-                  distance: step.distance,
-                  duration: step.duration,
-                })),
+        text: JSON.stringify({
+          routes: data.routes.map((route) => ({
+            distance: route.distance,
+            duration: route.duration,
+            steps: route.legs.map((leg) => ({
+              distance: leg.distance,
+              duration: leg.duration,
+              steps: leg.steps.map((step) => ({
+                distance: step.distance,
+                duration: step.duration,
               })),
             })),
-          },
-          null,
-          2,
-        ),
+          })),
+        }),
       },
     ],
     isError: false,
